@@ -1,0 +1,6 @@
+# 排除敏感文件
+config.local.json
+.env-check-result.*.json
+.parent-init-done.json
+__pycache__/
+*.pyc

@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "LLY",
+    "period": "2026-08-01",
+    "strongBuy": 11,
+    "buy": 19,
+    "hold": 7,
+    "sell": 1,
+    "strongSell": 0
+  },
+  {
+    "symbol": "LLY",
+    "period": "2026-07-01",
+    "strongBuy": 11,
+    "buy": 19,
+    "hold": 7,
+    "sell": 1,
+    "strongSell": 0
+  },
+  {
+    "symbol": "LLY",
+    "period": "2026-06-01",
+    "strongBuy": 11,
+    "buy": 20,
+    "hold": 7,
+    "sell": 1,
+    "strongSell": 0
+  },
+  {
+    "symbol": "LLY",
+    "period": "2026-05-01",
+    "strongBuy": 11,
+    "buy": 19,
+    "hold": 8,
+    "sell": 1,
+    "strongSell": 0
+  }
+]

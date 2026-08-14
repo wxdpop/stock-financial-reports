@@ -1,0 +1,16 @@
+{
+  "ticker": "LLY",
+  "name": "Eli Lilly and Co",
+  "country": "US",
+  "currency": "USD",
+  "estimateCurrency": "USD",
+  "exchange": "NEW YORK STOCK EXCHANGE, INC.",
+  "ipo": "1970-07-09",
+  "marketCapitalization": 1138100.7076221725,
+  "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/LLY.png",
+  "shareOutstanding": 941.74,
+  "finnhubIndustry": "Pharmaceuticals",
+  "phone": "13172762000",
+  "weburl": "https://www.lilly.com/",
+  "floatingShare": 939.73
+}

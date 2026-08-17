@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "APH",
+    "period": "2026-08-01",
+    "strongBuy": 5,
+    "buy": 15,
+    "hold": 3,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "APH",
+    "period": "2026-07-01",
+    "strongBuy": 5,
+    "buy": 15,
+    "hold": 4,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "APH",
+    "period": "2026-06-01",
+    "strongBuy": 5,
+    "buy": 15,
+    "hold": 4,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "APH",
+    "period": "2026-05-01",
+    "strongBuy": 5,
+    "buy": 15,
+    "hold": 4,
+    "sell": 0,
+    "strongSell": 0
+  }
+]

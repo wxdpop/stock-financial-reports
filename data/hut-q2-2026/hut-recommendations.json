@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "HUT",
+    "period": "2025-01-01",
+    "strongBuy": 1,
+    "buy": 9,
+    "hold": 1,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "HUT",
+    "period": "2024-12-01",
+    "strongBuy": 1,
+    "buy": 8,
+    "hold": 1,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "HUT",
+    "period": "2024-11-01",
+    "strongBuy": 1,
+    "buy": 8,
+    "hold": 1,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "HUT",
+    "period": "2024-10-01",
+    "strongBuy": 1,
+    "buy": 8,
+    "hold": 1,
+    "sell": 0,
+    "strongSell": 0
+  }
+]

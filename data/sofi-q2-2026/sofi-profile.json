@@ -1,0 +1,16 @@
+{
+  "ticker": "SOFI",
+  "name": "SoFi Technologies Inc",
+  "country": "US",
+  "currency": "USD",
+  "estimateCurrency": "USD",
+  "exchange": "NASDAQ NMS - GLOBAL MARKET",
+  "ipo": "2020-11-30",
+  "marketCapitalization": 19561.80319887993,
+  "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/SOFI.png",
+  "shareOutstanding": 1282.74,
+  "finnhubIndustry": "Financial Services",
+  "phone": "13026365401",
+  "weburl": "https://www.sofi.com/",
+  "floatingShare": 1263.11
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "RDDT",
+    "period": "2026-07-01",
+    "strongBuy": 8,
+    "buy": 16,
+    "hold": 10,
+    "sell": 1,
+    "strongSell": 0
+  },
+  {
+    "symbol": "RDDT",
+    "period": "2026-06-01",
+    "strongBuy": 8,
+    "buy": 16,
+    "hold": 10,
+    "sell": 1,
+    "strongSell": 0
+  },
+  {
+    "symbol": "RDDT",
+    "period": "2026-05-01",
+    "strongBuy": 8,
+    "buy": 17,
+    "hold": 10,
+    "sell": 1,
+    "strongSell": 0
+  },
+  {
+    "symbol": "RDDT",
+    "period": "2026-04-01",
+    "strongBuy": 8,
+    "buy": 16,
+    "hold": 10,
+    "sell": 1,
+    "strongSell": 0
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "SOFI",
+    "period": "2026-07-01",
+    "strongBuy": 6,
+    "buy": 8,
+    "hold": 13,
+    "sell": 3,
+    "strongSell": 1
+  },
+  {
+    "symbol": "SOFI",
+    "period": "2026-06-01",
+    "strongBuy": 6,
+    "buy": 8,
+    "hold": 13,
+    "sell": 3,
+    "strongSell": 1
+  },
+  {
+    "symbol": "SOFI",
+    "period": "2026-05-01",
+    "strongBuy": 6,
+    "buy": 8,
+    "hold": 13,
+    "sell": 3,
+    "strongSell": 1
+  },
+  {
+    "symbol": "SOFI",
+    "period": "2026-04-01",
+    "strongBuy": 6,
+    "buy": 8,
+    "hold": 12,
+    "sell": 3,
+    "strongSell": 1
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "APP",
+    "period": "2026-08-01",
+    "strongBuy": 11,
+    "buy": 21,
+    "hold": 4,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "APP",
+    "period": "2026-07-01",
+    "strongBuy": 11,
+    "buy": 21,
+    "hold": 4,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "APP",
+    "period": "2026-06-01",
+    "strongBuy": 10,
+    "buy": 22,
+    "hold": 4,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "APP",
+    "period": "2026-05-01",
+    "strongBuy": 10,
+    "buy": 22,
+    "hold": 4,
+    "sell": 0,
+    "strongSell": 0
+  }
+]

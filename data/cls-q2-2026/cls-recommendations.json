@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "CLS.TO",
+    "period": "2026-08-01",
+    "strongBuy": 3,
+    "buy": 8,
+    "hold": 1,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "CLS.TO",
+    "period": "2026-07-01",
+    "strongBuy": 3,
+    "buy": 8,
+    "hold": 1,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "CLS.TO",
+    "period": "2026-06-01",
+    "strongBuy": 3,
+    "buy": 8,
+    "hold": 1,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "CLS.TO",
+    "period": "2026-05-01",
+    "strongBuy": 3,
+    "buy": 13,
+    "hold": 1,
+    "sell": 0,
+    "strongSell": 0
+  }
+]

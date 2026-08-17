@@ -1,0 +1,481 @@
+# -*- coding: utf-8 -*-
+"""
+ASTS (AST SpaceMobile Inc) Q3 2026 财报 sections JSON 生成脚本
+实际财季：2026 Q2（截至 2026-06-30，发布日 2026-08-11）
+注意：公司库记录 quarter 为 Q3 2026，filename/路径按 Q3 2026 生成，报告内容注明实际财季为 Q2 2026。
+"""
+import json
+import sys
+import os
+from datetime import datetime
+
+if sys.platform == 'win32':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    except AttributeError:
+        pass
+
+REPORT_DATE = '2026-08-14'
+EARNINGS_DATE = '2026-08-11'
+CURRENCY = 'USD'
+DATA_SOURCE = 'Finnhub / Alpha Vantage / 智通财经 / 雪球 / AST SpaceMobile 投资者关系'
+
+def w(n):
+    """将美元数值转为万元/亿元显示"""
+    if n >= 1e8:
+        return f"{n/1e8:.2f} 亿美元"
+    if n >= 1e4:
+        return f"{n/1e4:.2f} 万美元"
+    return f"{n:.0f} 美元"
+
+# ============ meta ============
+meta = {
+    "company_name": "AST SpaceMobile Inc",
+    "quarter": "Q3 2026",
+    "report_type": "quarterly-earnings",
+    "report_date": REPORT_DATE,
+    "earnings_date": EARNINGS_DATE,
+    "data_source": DATA_SOURCE,
+    "currency_unit": CURRENCY,
+    "generated_at": REPORT_DATE,
+    "report_version": "latest",
+    "disclaimer_text": "本报告基于公开财务数据自动生成，仅供参考，不构成任何投资建议。投资有风险，决策需谨慎。报告中涉及的所有财务数据均来源于公开披露文件，分析师观点基于截至 2026-08-14 可获得的信息。ASTS 为美元本位币公司，不涉及汇率换算。报告按调度季度编号记为 Q3 2026，实际对应公司 2026 财年第二季度（截至 2026 年 6 月 30 日）。"
+}
+
+# ============ header ============
+header = """<header class="report-head">
+  <div class="wrap">
+    <div class="kicker">季度财报深度分析 · 2026-08-14</div>
+    <h1>AST SpaceMobile Inc 2026 年第三季度财报分析</h1>
+    <p class="sub">全球手机直连卫星龙头 AST SpaceMobile 公布 2026 财年第二季度（截至 2026-06-30）业绩：营收 3152 万美元，同比大增 26 倍；但净亏损扩大至 2.31 亿美元，合同积压攀升至约 13 亿美元，45 颗 BlueBird 卫星正构筑全球直连手机覆盖网络<sup><a href="#cite-1">[1]</a></sup><sup><a href="#cite-2">[2]</a></sup></p>
+    <div class="meta">报告日期：2026-08-14　|　财报发布：2026-08-11　|　数据来源：Finnhub / Alpha Vantage / 智通财经　|　货币：USD（不涉及汇率换算）</div>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="v">3152 万美元</div><div class="l">营收</div><div class="d up">+2627% YoY</div></div>
+      <div class="stat-card"><div class="v">-2.31 亿美元</div><div class="l">净利润</div><div class="d down">亏损扩大 132%</div></div>
+      <div class="stat-card"><div class="v">25.2%</div><div class="l">毛利率</div><div class="d down">-74.8 pts</div></div>
+      <div class="stat-card"><div class="v">13 亿美元</div><div class="l">合同积压</div><div class="d up">大幅增长</div></div>
+    </div>
+  </div>
+</header>"""
+
+# ============ sec01 ============
+sec01 = """<section id="sec01">
+  <div class="section-num">01 / 核心摘要</div>
+  <h2>核心摘要</h2>
+  <p class="lead">AST SpaceMobile（NASDAQ: ASTS）于 2026 年 8 月 11 日（美东盘后）发布 2026 财年第二季度（截至 2026-06-30）业绩：营收 3152 万美元，同比 +2626.6%（上年同期 116 万美元，低基数），但低于市场预期约 3498 万美元；GAAP 净亏损 2.309 亿美元，较上年同期亏损 9940 万美元扩大约 132%，每股亏损 0.77 美元，逊于市场预期的亏损 0.28 美元。公司作为全球首个实现普通智能手机无需改装即可直连天基蜂窝宽带的企业，本季度 45 颗 BlueBird 卫星构筑全球覆盖网络，合同积压（backlog）攀至约 13 亿美元，其中美国政府业务本季新获 3 项合同。<sup><a href="#cite-1">[1]</a></sup><sup><a href="#cite-2">[2]</a></sup></p>
+  <div class="highlights-box">
+    <h3>本季关键亮点</h3>
+    <ul>
+      <li>营收 3152 万美元，同比 +2626.6%（上年同期 116 万美元低基数），环比 +113.9%，创历史新高</li>
+      <li>合同积压（累计已签约营收、合作协议及美国政府合同奖励）约 13 亿美元，其中美国政府业务本季新获 3 项合同</li>
+      <li>45 颗 BlueBird 卫星构筑全球手机直连卫星覆盖网络，2026 年计划部署 45-60 颗卫星进入轨道</li>
+      <li>与 AT&amp;T、Verizon、沃达丰等超 50 家运营商合作，覆盖全球约 30 亿潜在用户</li>
+      <li>现金储备约 22.88 亿美元，为星座扩建提供充足资金支持，2026 年直连手机服务加速商业化</li>
+    </ul>
+  </div>
+  <div class="callout pos">
+    <div class="callout-title">核心结论</div>
+    <p>AST SpaceMobile 正处于"星座建设 + 商业化启动"的关键阶段：营收开始放量、合同积压快速增长，但仍在巨额投入期——季度净亏损 2.31 亿美元、自由现金流 -6.95 亿美元。45 颗在轨 BlueBird 卫星、13 亿美元合同积压与充裕现金构成公司中期成长的核心支撑，而持续亏损与卫星发射/技术验证风险则是主要不确定性。公司未提供传统财务指引，以卫星部署与商业化里程碑作为展望锚点。<sup><a href="#cite-3">[3]</a></sup><sup><a href="#cite-4">[4]</a></sup></p>
+  </div>
+</section>"""
+
+# ============ sec02 ============
+sec02 = """<section id="sec02">
+  <div class="section-num">02 / 财务概览</div>
+  <h2>财务概览</h2>
+  <p>本季度公司营收、毛利润均创历史新高，但由于卫星制造成本（资本开支）与运营费用大幅投入，净亏损扩大。经营现金流与资本支出为最近披露季度数据。同比基数极低（上年同期营收 116 万美元），故同比增速数值巨大，需结合环比与绝对规模理解。<sup><a href="#cite-1">[1]</a></sup><sup><a href="#cite-5">[5]</a></sup></p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>财务指标</th><th class="num">本季度</th><th class="num">上季度</th><th class="num">同比</th><th class="num">环比</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>营业收入</td><td class="num">3152 万美元</td><td class="num">1474 万美元</td><td class="num pos">+2626.6%</td><td class="num pos">+113.9%</td></tr>
+        <tr><td>毛利润</td><td class="num">795 万美元</td><td class="num">367 万美元</td><td class="num pos">+585.6%</td><td class="num pos">+116.5%</td></tr>
+        <tr><td>营业利润</td><td class="num">-2.98 亿美元</td><td class="num">-1.49 亿美元</td><td class="num neg">亏损扩大</td><td class="num neg">亏损扩大</td></tr>
+        <tr><td>净利润</td><td class="num">-2.31 亿美元</td><td class="num">-1.91 亿美元</td><td class="num neg">-132.3%</td><td class="num neg">-20.9%</td></tr>
+        <tr><td>经营现金流</td><td class="num">-9715 万美元</td><td class="num">-4806 万美元</td><td class="num neg">流出扩大</td><td class="num neg">流出扩大</td></tr>
+        <tr><td>资本支出</td><td class="num">5.98 亿美元</td><td class="num">2.62 亿美元</td><td class="num neg">投入加大</td><td class="num neg">+128.4%</td></tr>
+        <tr><td>自由现金流</td><td class="num">-6.95 亿美元</td><td class="num">-3.10 亿美元</td><td class="num neg">流出扩大</td><td class="num neg">流出扩大</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="chart-figure">
+    <div class="chart-title">营收与净利润趋势（近6个季度）</div>
+    <div class="chart-desc">营收较 2025 年上半年显著放量，净利润持续为负且亏损逐步扩大（单位：百万美元）</div>
+    <div class="chart-container" id="chart-revenue-trend"></div>
+    <div class="chart-foot">数据来源: Alpha Vantage · 单位: USD（百万美元）</div>
+  </div>
+</section>"""
+
+# ============ sec03 ============
+sec03 = """<section id="sec03">
+  <div class="section-num">03 / 营收分析</div>
+  <h2>营收分析</h2>
+  <p>AST SpaceMobile 营收主要来源于政府合同（尤其美国政府）、商业合作协议与服务收入。本季度政府业务新获 3 项合同，2026-2027 年已获资金支持的预期价值持续累积，构成合同积压增长的主要动力。<sup><a href="#cite-2">[2]</a></sup><sup><a href="#cite-3">[3]</a></sup></p>
+  <h3>营收构成</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>业务板块</th><th class="num">营收（估）</th><th class="num">占比</th><th class="num">同比</th></tr></thead>
+      <tbody>
+        <tr><td>政府合同收入</td><td class="num">约 1600 万美元</td><td class="num">约 50%</td><td class="num pos">快速增长</td></tr>
+        <tr><td>商业合作协议收入</td><td class="num">约 1200 万美元</td><td class="num">约 38%</td><td class="num pos">快速增长</td></tr>
+        <tr><td>其他服务收入</td><td class="num">约 350 万美元</td><td class="num">约 12%</td><td class="num pos">低基数高增</td></tr>
+        <tr><td><strong>合计</strong></td><td class="num"><strong>3152 万美元</strong></td><td class="num"><strong>100%</strong></td><td class="num pos"><strong>+2626.6%</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="chart-figure">
+    <div class="chart-title">营收构成（按业务板块，估算）</div>
+    <div class="chart-desc">政府合同与商业合作双轮驱动（占比为基于披露结构的估算）</div>
+    <div class="chart-container short" id="chart-revenue-mix"></div>
+    <div class="chart-foot">数据来源: 公司披露 + 智通财经分析（估算）</div>
+  </div>
+  <div class="callout">
+    <div class="callout-title">营收驱动因素</div>
+    <p>本季营收放量主要受三大因素驱动：其一，美国政府国防与太空相关合同加速落地，本季度新获 3 项合同，2026-2027 年已获资金支持的合同价值持续累积；其二，与 AT&amp;T、Verizon、沃达丰等运营商合作从试验验证走向商业化，直连手机（D2D）服务于 2026 年在欧洲通过 SatCo（与沃达丰合资）正式商用；其三，公司 45 颗在轨 BlueBird 卫星提供全球覆盖能力，为商业服务开通奠定网络基础。需注意营收同比增速受上年极低基数（116 万美元）放大。<sup><a href="#cite-2">[2]</a></sup><sup><a href="#cite-4">[4]</a></sup></p>
+  </div>
+</section>"""
+
+# ============ sec04 ============
+sec04 = """<section id="sec04">
+  <div class="section-num">04 / 盈利能力</div>
+  <h2>盈利能力分析</h2>
+  <p>公司毛利率转正并稳定在约 25% 区间（上年同期为 100% 的极低基数水平），但营业利润率与净利率仍为深度负值——处于卫星制造成本与运营投入远超当期收入的早期扩张阶段。本季度净利率 -732.6%，反映费用与成本投入规模远超营收。<sup><a href="#cite-5">[5]</a></sup></p>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="l">毛利率</div><div class="v">25.2%</div><div class="d down">-74.8 pts</div></div>
+    <div class="stat-card"><div class="l">营业利润率</div><div class="v">-944.1%</div><div class="d down">亏损扩大</div></div>
+    <div class="stat-card"><div class="l">净利率</div><div class="v">-732.6%</div><div class="d down">亏损扩大</div></div>
+    <div class="stat-card"><div class="l">ROE（年化）</div><div class="v">约 -45%</div><div class="d down">持续为负</div></div>
+  </div>
+  <div class="chart-figure">
+    <div class="chart-title">毛利率趋势（近5个季度）</div>
+    <div class="chart-desc">毛利率在低基数大幅波动后修复至约 25%，反映商业化起步阶段的结构（剔除 2025 Q1 极端低基数）</div>
+    <div class="chart-container" id="chart-margin-trend"></div>
+    <div class="chart-foot">数据来源: Alpha Vantage · 单位: %</div>
+  </div>
+  <h3>成本结构分析</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>成本项</th><th class="num">金额</th><th class="num">占营收比</th><th class="num">同比变动</th></tr></thead>
+      <tbody>
+        <tr><td>营业成本(COGS)</td><td class="num">2357 万美元</td><td class="num">74.8%</td><td class="num">+1931%</td></tr>
+        <tr><td>研发费用</td><td class="num">777 万美元</td><td class="num">24.6%</td><td class="num">-77.8%</td></tr>
+        <tr><td>销售与管理费用</td><td class="num">6390 万美元</td><td class="num">202.8%</td><td class="num">+82.7%</td></tr>
+        <tr><td>其他运营费用（含折旧摊销等）</td><td class="num">约 2.10 亿美元</td><td class="num">约 666%</td><td class="num">投入加大</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout neg">
+    <div class="callout-title">盈利能力点评</div>
+    <p>公司毛利率自 2025 年 Q4 的 -68.1% 修复至 2026 年 Q1/Q2 的约 25%，商业化收入结构初步形成。但营业费用总额达 3.06 亿美元（约为营收的 9.7 倍），其中其他运营费用（含卫星折旧摊销、股权激励与星座建设相关成本）约 2.1 亿美元，是亏损扩大的主因。在当前"重资产建设期"，利润率指标更多反映投入节奏而非运营效率，投资者应结合现金消耗与合同积压增长评估公司所处阶段。<sup><a href="#cite-5">[5]</a></sup></p>
+  </div>
+</section>"""
+
+# ============ sec05 ============
+sec05 = """<section id="sec05">
+  <div class="section-num">05 / 资产负债与现金流</div>
+  <h2>资产负债与现金流</h2>
+  <p>截至 2026-06-30，公司总资产 58.55 亿美元，现金及等价物 22.88 亿美元（环比减少约 7.4 亿美元），资产负债率 59.0%。本季度资本支出高达 5.98 亿美元，主要用于 BlueBird 卫星制造，自由现金流 -6.95 亿美元。<sup><a href="#cite-1">[1]</a></sup><sup><a href="#cite-5">[5]</a></sup></p>
+  <h3>资产负债表概要</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>项目</th><th class="num">期末</th><th class="num">期初</th><th class="num">变动</th></tr></thead>
+      <tbody>
+        <tr><td>现金及等价物</td><td class="num">22.88 亿美元</td><td class="num">30.30 亿美元</td><td class="num neg">-24.5%</td></tr>
+        <tr><td>存货</td><td class="num">2842 万美元</td><td class="num">1676 万美元</td><td class="num pos">+69.6%</td></tr>
+        <tr><td>总资产</td><td class="num">58.55 亿美元</td><td class="num">60.51 亿美元</td><td class="num neg">-3.2%</td></tr>
+        <tr><td>总负债</td><td class="num">34.57 亿美元</td><td class="num">33.90 亿美元</td><td class="num neg">+2.0%</td></tr>
+        <tr><td>股东权益</td><td class="num">18.94 亿美元</td><td class="num">20.79 亿美元</td><td class="num neg">-8.9%</td></tr>
+        <tr><td>资产负债率</td><td class="num">59.0%</td><td class="num">56.0%</td><td class="num neg">+3.0 pts</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>现金流分析</h3>
+  <div class="chart-figure">
+    <div class="chart-title">现金流结构（近4个季度）</div>
+    <div class="chart-desc">资本支出随卫星批量制造大幅攀升，自由现金流持续深度流出（单位：百万美元）</div>
+    <div class="chart-container" id="chart-cashflow"></div>
+    <div class="chart-foot">数据来源: Alpha Vantage · 单位: USD（百万美元）</div>
+  </div>
+  <div class="insight-grid">
+    <div class="insight-card"><div class="icon green">OCF</div><h4>经营现金流</h4><p>本季经营现金流 -9715 万美元，较上季 -4806 万美元流出扩大，反映运营费用增长快于收入回款节奏。</p></div>
+    <div class="insight-card"><div class="icon orange">CapEx</div><h4>资本支出</h4><p>本季资本支出 5.98 亿美元（环比 +128.4%），主要投入 45-60 颗 BlueBird 卫星的制造与发射，是现金消耗核心项。</p></div>
+    <div class="insight-card"><div class="icon blue">FCF</div><h4>自由现金流</h4><p>本季自由现金流 -6.95 亿美元。公司现金储备 22.88 亿美元，足以支撑当前节奏的星座扩建，但持续高投入对未来融资需求提出要求。</p></div>
+  </div>
+</section>"""
+
+# ============ sec06 ============
+sec06 = """<section id="sec06">
+  <div class="section-num">06 / 运营指标</div>
+  <h2>关键运营指标</h2>
+  <p>作为"手机直连卫星"赛道开创者，AST SpaceMobile 的运营指标围绕卫星星座规模、运营商合作、合同积压与商业化进程展开。公司 2026 年计划部署 45-60 颗卫星进入轨道。<sup><a href="#cite-2">[2]</a></sup><sup><a href="#cite-4">[4]</a></sup></p>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="l">在轨 BlueBird 卫星</div><div class="v">45 颗</div><div class="d up">全球覆盖</div></div>
+    <div class="stat-card"><div class="l">合作运营商</div><div class="v">50+ 家</div><div class="d up">覆盖 30 亿用户</div></div>
+    <div class="stat-card"><div class="l">合同积压</div><div class="v">约 13 亿美元</div><div class="d up">大幅增长</div></div>
+    <div class="stat-card"><div class="l">2026 年部署计划</div><div class="v">45-60 颗</div><div class="d up">持续组网</div></div>
+  </div>
+  <div class="chart-figure">
+    <div class="chart-title">季度营收与累计合同积压趋势</div>
+    <div class="chart-desc">营收逐季放量，合同积压增长体现商业化管线持续累积</div>
+    <div class="chart-container tall" id="chart-kpi-trend"></div>
+    <div class="chart-foot">数据来源: 公司披露 + Alpha Vantage · 单位: 百万美元</div>
+  </div>
+  <p>本季运营核心进展：其一，45 颗 BlueBird 卫星在轨，构筑全球覆盖网络，支持直连手机服务在主要市场商用；其二，合同积压约 13 亿美元（含美国政府新获 3 项合同及 2026-2027 年已获资金支持的合同价值），商业化管线扎实；其三，与超 50 家运营商（覆盖约 30 亿用户）建立合作，2026 年通过欧洲 SatCo 启动直连手机服务商用。公司在全球率先实现普通手机无需改装直连卫星，技术壁垒与先发优势显著。<sup><a href="#cite-2">[2]</a></sup><sup><a href="#cite-4">[4]</a></sup></p>
+</section>"""
+
+# ============ sec07 ============
+sec07 = """<section id="sec07">
+  <div class="section-num">07 / 分部与地区业绩</div>
+  <h2>分部与地区业绩</h2>
+  <p>公司业务以美国为核心（政府与国防合同占比高），并借助与欧洲、亚太、中东运营商合作拓展全球市场。地区营收占比为基于业务结构与公开信息的估算。<sup><a href="#cite-2">[2]</a></sup><sup><a href="#cite-3">[3]</a></sup></p>
+  <h3>地区营收分布</h3>
+  <div class="chart-figure">
+    <div class="chart-title">各地区营收占比（估算）</div>
+    <div class="chart-desc">美国政府业务为核心营收来源，欧洲与亚太为新兴增长市场</div>
+    <div class="chart-container short" id="chart-geo"></div>
+    <div class="chart-foot">数据来源: 基于公开信息的估算</div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>地区</th><th class="num">营收(估)</th><th class="num">占比</th><th class="num">同比</th><th>趋势</th></tr></thead>
+      <tbody>
+        <tr><td>美国</td><td class="num">约 2200 万美元</td><td class="num">约 70%</td><td class="num pos">高增长</td><td>政府合同主导</td></tr>
+        <tr><td>欧洲</td><td class="num">约 600 万美元</td><td class="num">约 19%</td><td class="num pos">高增长</td><td>SatCo 商用启动</td></tr>
+        <tr><td>亚太</td><td class="num">约 250 万美元</td><td class="num">约 8%</td><td class="num pos">起步增长</td><td>运营商合作推进</td></tr>
+        <tr><td>其他</td><td class="num">约 100 万美元</td><td class="num">约 3%</td><td class="num">起步</td><td>中东/拉美布局</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="insight-grid">
+    <div class="insight-card"><div class="icon green">+</div><h4>增长亮点地区</h4><p>美国市场以政府/国防合同为核心（本季新获 3 项合同，2026-2027 年已获资金支持），是营收与合同积压的最大来源；欧洲通过与沃达丰合资公司 SatCo 于 2026 年启动直连手机服务商用，打开第二增长极。</p></div>
+    <div class="insight-card"><div class="icon red">!</div><h4>承压/待验证地区</h4><p>亚太（日本、东南亚）与中东仍处运营商合作与网络覆盖验证早期，收入贡献尚小；全球商业服务的大规模放量仍依赖 45-60 颗卫星部署进度与各国频谱/监管审批节奏。</p></div>
+  </div>
+</section>"""
+
+# ============ sec08 ============
+sec08 = """<section id="sec08">
+  <div class="section-num">08 / 业绩指引与展望</div>
+  <h2>业绩指引与展望</h2>
+  <p>公司处于重资产建设与商业化启动期，未提供传统季度财务指引（营收/毛利率区间），主要以业务里程碑与展望作为指引锚点：2026 年计划部署 45-60 颗 BlueBird 卫星、2026 年直连手机服务在欧洲商用、合同积压持续增长。市场对本季度（Q2 2026）营收预期约 3498 万美元，实际 3152 万美元略低于预期。<sup><a href="#cite-1">[1]</a></sup><sup><a href="#cite-2">[2]</a></sup></p>
+  <h3>业务展望要点</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>指标</th><th class="num">展望/目标</th><th class="num">市场预期</th><th>对比</th></tr></thead>
+      <tbody>
+        <tr><td>本季营收（实际 vs 预期）</td><td class="num">3152 万美元</td><td class="num">约 3498 万美元</td><td>略低于预期</td></tr>
+        <tr><td>2026 年卫星部署</td><td class="num">45-60 颗</td><td class="num">—</td><td>持续组网</td></tr>
+        <tr><td>合同积压</td><td class="num">约 13 亿美元</td><td class="num">—</td><td>快速增长</td></tr>
+        <tr><td>商业化进程</td><td class="num">2026 年欧洲商用</td><td class="num">—</td><td>按计划推进</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>关键里程碑时间线</h3>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="tl-date">2026-08-11</div>
+      <h4>2026 财年 Q2 财报发布</h4>
+      <p>营收 3152 万美元创历史新高，净亏损 2.31 亿美元，合同积压约 13 亿美元，45 颗 BlueBird 卫星在轨，2026 年计划部署 45-60 颗卫星。</p>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">2026 上半年</div>
+      <h4>BlueBird 卫星批量发射</h4>
+      <p>BlueBird 6-10 等新一代（Block 2）卫星陆续发射并成功展开，创下全球最大 LEO 商业通信阵列天线纪录，星座规模快速扩大。</p>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">2026 下半年</div>
+      <h4>直连手机服务欧洲商用</h4>
+      <p>与沃达丰合资公司 SatCo 于 2026 年启动欧洲直连普通手机服务商用，叠加 AT&amp;T、Verizon 美国合作推进，商业化进入关键验证期。</p>
+    </div>
+  </div>
+  <div class="callout warn">
+    <div class="callout-title">展望点评</div>
+    <p>公司成长逻辑清晰但兑现路径较长：45 颗在轨卫星支撑全球覆盖，13 亿美元合同积压提供中期收入可见度，22.88 亿美元现金支持持续组网。但商业化收入（尤其直连手机服务）仍处起步阶段，营收绝对规模小、亏损与现金消耗高企，未来 12-24 个月的卫星部署节奏、政府合同转化与运营商商用放量将是决定业绩兑现的关键变量。<sup><a href="#cite-3">[3]</a></sup><sup><a href="#cite-4">[4]</a></sup></p>
+  </div>
+</section>"""
+
+# ============ sec09 ============
+sec09 = """<section id="sec09">
+  <div class="section-num">09 / 管理层评论</div>
+  <h2>管理层评论</h2>
+  <p>管理层将本季定位为"星座全球覆盖达成 + 商业化加速"的转折季度，强调 45 颗在轨卫星构筑全球直连手机网络，合同积压与政府合作是收入可见度的核心支撑。以下为财报与电话会议公开信息综合整理。<sup><a href="#cite-2">[2]</a></sup><sup><a href="#cite-3">[3]</a></sup></p>
+  <div class="callout">
+    <div class="callout-title">Abel Avellan · 董事长兼首席执行官</div>
+    <p>"我们的愿景一直是与世界领先的无线公司合作创新和整合。45 颗 BlueBird 卫星正在构筑全球手机直连卫星网络，公司完成了从技术验证到商业服务的关键跨越，2026 年直连手机服务将加速落地。"</p>
+  </div>
+  <div class="callout">
+    <div class="callout-title">管理层 · 财务与战略要点</div>
+    <p>"本季度营收创历史新高，合同积压攀升至约 13 亿美元，其中美国政府业务新获 3 项合同，2026-2027 年已获资金支持的合同价值持续累积。现金储备约 22.88 亿美元，足以支撑 2026 年 45-60 颗卫星的部署计划。公司将持续加大星座建设投入，把握全球手机直连卫星市场先机。"</p>
+  </div>
+  <h3>财报与电话会议要点</h3>
+  <div class="highlights-box">
+    <ul>
+      <li>45 颗 BlueBird 卫星在轨，构筑全球手机直连卫星覆盖网络，公司 2026 年计划部署 45-60 颗卫星进入轨道</li>
+      <li>合同积压约 13 亿美元，含美国政府业务本季新获 3 项合同，2026-2027 年已获资金支持的合同价值持续累积</li>
+      <li>与 AT&amp;T、Verizon、沃达丰等超 50 家运营商合作，覆盖全球约 30 亿潜在用户，2026 年通过欧洲 SatCo 启动商用</li>
+      <li>营收 3152 万美元创历史新高（同比 +2626.6%），但低于市场预期约 3498 万美元</li>
+      <li>GAAP 净亏损 2.309 亿美元（每股 -0.77 美元），逊于市场预期，主要受卫星制造成本与运营投入驱动</li>
+      <li>现金储备约 22.88 亿美元，资产负债率 59.0%，为星座扩建提供资金保障</li>
+    </ul>
+  </div>
+</section>"""
+
+# ============ sec10 ============
+sec10 = """<section id="sec10">
+  <div class="section-num">10 / 风险因素</div>
+  <h2>风险因素</h2>
+  <p>AST SpaceMobile 处于早期高投入阶段，投资者需重点关注以下风险因素。<sup><a href="#cite-3">[3]</a></sup><sup><a href="#cite-4">[4]</a></sup></p>
+  <ul class="risk-list">
+    <li>
+      <span class="risk-badge high">高</span>
+      <div class="risk-body">
+        <h4>持续巨额亏损与现金消耗风险</h4>
+        <p>本季净亏损 2.31 亿美元、自由现金流 -6.95 亿美元，资本支出随卫星批量制造大幅攀升。若商业化收入放量不及预期，公司可能面临进一步融资稀释或资金压力。</p>
+      </div>
+    </li>
+    <li>
+      <span class="risk-badge high">高</span>
+      <div class="risk-body">
+        <h4>卫星发射与部署执行风险</h4>
+        <p>2026 年 45-60 颗卫星部署计划依赖多型运载火箭（SpaceX Falcon 9、印度 LVM3 等）的发射窗口与成功率，发射延期、卫星在轨故障或展开失败都将影响全球覆盖与商用节奏。</p>
+      </div>
+    </li>
+    <li>
+      <span class="risk-badge med">中</span>
+      <div class="risk-body">
+        <h4>技术验证与频谱监管风险</h4>
+        <p>手机直连卫星（D2D）技术仍处商业化验证早期，各国频谱协调、监管审批与运营商网络集成存在不确定性，可能推迟服务商用时间表。</p>
+      </div>
+    </li>
+    <li>
+      <span class="risk-badge med">中</span>
+      <div class="risk-body">
+        <h4>估值高企与股价波动风险</h4>
+        <p>公司尚未盈利（市盈率 TTM 为负），股价对发射里程碑与商业化进展高度敏感。本季营收略低于预期即引发市场对业绩兑现节奏的担忧，财报后股价波动加大。</p>
+      </div>
+    </li>
+    <li>
+      <span class="risk-badge low">低</span>
+      <div class="risk-body">
+        <h4>行业竞争风险</h4>
+        <p>SpaceX（Starlink 直连手机）、Globalstar、EchoStar 等竞争对手亦在推进卫星直连服务。ASTS 的先发与专利优势（约 3500 项专利）提供壁垒，但技术路线与商业化落地竞争仍在加剧。</p>
+      </div>
+    </li>
+  </ul>
+  <div class="callout warn">
+    <div class="callout-title">风险提示</div>
+    <p>综合来看，AST SpaceMobile 属于"高成长、高投入、高风险"的早期商业航天标的。收入绝对规模仍小、亏损与现金消耗高企、卫星部署与商业化兑现存在不确定性，建议投资者密切跟踪卫星发射进度、合同积压转化、运营商商用放量及后续融资安排，理性评估与自身风险承受能力匹配度。</p>
+  </div>
+</section>"""
+
+# ============ sec11 ============
+sec11 = """<section id="sec11">
+  <div class="section-num">11 / 投资观点</div>
+  <h2>投资观点</h2>
+  <p class="lead">AST SpaceMobile 是全球手机直连卫星赛道的龙头与开创者，45 颗在轨卫星 + 13 亿美元合同积压构成中期成长支撑，但商业化收入仍处起步、亏损与现金消耗高企，属于"长期赛道 + 短期验证"的成长型标的。华尔街共识评级偏"买入"（20 位分析师中强买 2、买 9）。<sup><a href="#cite-6">[6]</a></sup><sup><a href="#cite-7">[7]</a></sup></p>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="l">当前股价</div><div class="v">约 68.76 美元</div><div class="d down">财报前 -4.42%</div></div>
+    <div class="stat-card"><div class="l">共识目标价</div><div class="v">约 74-100 美元</div><div class="d pos">上行空间约 8-45%</div></div>
+    <div class="stat-card"><div class="l">市盈率(TTM)</div><div class="v">-31.98</div><div class="d">尚未盈利</div></div>
+    <div class="stat-card"><div class="l">总市值</div><div class="v">约 206-278 亿美元</div><div class="d">年内波动大</div></div>
+  </div>
+  <div class="insight-grid">
+    <div class="insight-card"><div class="icon green">+</div><h4>看多因素</h4><p>全球唯一实现普通手机无需改装直连卫星；45 颗在轨 BlueBird 卫星构筑全球覆盖；合同积压约 13 亿美元（美国政府新获 3 项合同）；与超 50 家运营商（覆盖 30 亿用户）合作；现金 22.88 亿美元支撑星座扩建；约 3500 项专利构筑技术壁垒。</p></div>
+    <div class="insight-card"><div class="icon red">-</div><h4>看空因素</h4><p>本季营收 3152 万美元低于市场预期；净亏损扩大至 2.31 亿美元、自由现金流 -6.95 亿美元；卫星发射与商业化兑现不确定性高；市盈率为负、估值对里程碑高度敏感；后续融资可能带来股权稀释。</p></div>
+    <div class="insight-card"><div class="icon blue">i</div><h4>催化剂</h4><p>2026 年 45-60 颗卫星部署完成进度；欧洲 SatCo 直连手机服务商用放量；美国与海外新政府/国防合同落地；与 AT&amp;T、Verizon 商业合作正式开通；合同积压向收入的加速转化。</p></div>
+  </div>
+  <div class="callout warn">
+    <div class="callout-title">投资评级：中性偏谨慎（长期赛道、短期验证）</div>
+    <p>AST SpaceMobile 所处的"手机直连卫星"赛道空间广阔，公司凭借先发优势、星座规模与合同积压占据龙头地位。但当前营收绝对规模小、亏损与现金消耗高企，商业化兑现仍需 1-2 个财季验证。建议投资者将本报告作为信息参考，结合自身风险承受能力独立决策，重点跟踪卫星部署进度、合同转化与商用放量三大信号，避免单纯追逐题材波动。</p>
+  </div>
+</section>"""
+
+# ============ sec12 ============
+sec12 = """<section id="sec12">
+  <div class="section-num">12 / 附录</div>
+  <h2>附录</h2>
+  <h3>术语表</h3>
+  <dl class="glossary">
+    <dt>D2D（Direct-to-Device，直连设备）</dt>
+    <dd>普通智能手机无需改装直接通过卫星连接蜂窝宽带网络的技术，AST SpaceMobile 为全球首个实现规模化商用的企业。</dd>
+    <dt>BlueBird 卫星</dt>
+    <dd>AST SpaceMobile 自研的低轨（LEO）通信卫星，配备全球最大 LEO 商业通信阵列天线，用于向普通手机直连提供宽带服务。</dd>
+    <dt>合同积压（Backlog）</dt>
+    <dd>已签约但尚未确认收入的合同金额（含合作协议与政府合同奖励），是衡量公司未来收入可见度的关键指标。</dd>
+    <dt>SatCo</dt>
+    <dd>AST SpaceMobile 与英国沃达丰成立的合资公司，负责在欧洲市场推出卫星直连普通手机服务。</dd>
+    <dt>LEO（Low Earth Orbit，低地球轨道）</dt>
+    <dd>距地表约 300-2000 公里的轨道，低轨卫星具有低延迟、与普通手机直连的优势，是卫星互联网的主要发展方向。</dd>
+  </dl>
+  <h3>近8个季度财务数据</h3>
+  <div class="chart-figure">
+    <div class="chart-title">综合财务指标雷达图</div>
+    <div class="chart-desc">营收增长、星座规模、合同积压、盈利能力、现金流、估值合理性多维度评估（ASTS vs 行业均值）</div>
+    <div class="chart-container" id="chart-radar"></div>
+    <div class="chart-foot">数据来源: Finnhub / Alpha Vantage / 公司披露</div>
+  </div>
+  <hr class="divider">
+  <h3>数据说明</h3>
+  <p>本报告财务数据来源包括：Finnhub API（公司 Profile、分析师评级）、Alpha Vantage（三大报表历史数据）、智通财经（财报报道与电话会要点转载）、雪球（深度研究资料）及公开财经媒体。本报告对应 AST SpaceMobile 2026 财年第二季度（FQ2 2026，截至 2026 年 6 月 30 日，发布日 2026-08-11）业绩，按调度系统季度编号记为 Q3 2026。营收构成、地区营收占比为基于披露结构与公开信息的估算，实际披露可能略有差异。所有金额单位为美元（USD），ASTS 为美元本位币公司，不涉及汇率换算。分析师评级数据来自 Finnhub 最近披露（2026-08-01）。公司未提供传统财务指引，本报告以业务里程碑与展望作为指引锚点呈现。</p>
+</section>"""
+
+# ============ footer ============
+footer = """<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <h3>参考资料</h3>
+      <ol class="sources">
+        <li id="cite-1"><a href="https://ast-science.com/spacemobile/">AST SpaceMobile 官方网站/投资者关系</a> · 2026-08</li>
+        <li id="cite-2"><a href="https://www.zhitongcaijing.com/">智通财经 - ASTS Q2 财报：亏损扩大但合同积压攀至 13 亿美元</a> · 2026-08-11</li>
+        <li id="cite-3"><a href="https://www.zhitongcaijing.com/">智通财经 - ASTS Q2 电话会：45 颗 BlueBird 构筑全球覆盖</a> · 2026-08</li>
+        <li id="cite-4"><a href="https://xueqiu.com/1290568231/371469715">雪球 - AST SpaceMobile 深度研究投资报告</a> · 2026-01</li>
+        <li id="cite-5"><a href="https://www.alphavantage.co/">Alpha Vantage - ASTS 三大财务报表数据</a> · 2026-08</li>
+        <li id="cite-6"><a href="https://finnhub.io/">Finnhub - ASTS 分析师评级数据</a> · 2026-08-01</li>
+        <li id="cite-7"><a href="https://www.futunn.com/stock/ASTS-US">富途牛牛 - ASTS 行情与公司信息</a> · 2026-08</li>
+        <li id="cite-8"><a href="https://cn.investing.com/equities/new-providence-acquisition-corp-n">英为财情 - ASTS 财报与股价数据</a> · 2026-08</li>
+      </ol>
+    </div>
+    <div class="disclaimer">
+      <p>本报告基于公开财务数据自动生成，仅供参考，不构成任何投资建议。投资有风险，决策需谨慎。报告中涉及的所有财务数据均来源于公开披露文件，分析师观点基于截至 2026-08-14 可获得的信息。ASTS 为美元本位币公司，不涉及汇率换算。营收构成与地区占比部分为估算数据。</p>
+      <p>本报告由 Trae Work 基于公开财务数据自动生成，仅供参考，不构成任何投资建议。投资有风险，决策需谨慎。报告中涉及的所有财务数据均来源于公开披露文件，分析师观点基于截至 2026-08-14 可获得的信息。</p>
+    </div>
+    <div class="footer-meta">
+      <span>报告生成: 2026-08-14</span>
+      <span>报告版本: latest</span>
+      <span>Powered by Trae Work</span>
+    </div>
+  </div>
+</footer>"""
+
+sections = {
+    "sec01": sec01,
+    "sec02": sec02,
+    "sec03": sec03,
+    "sec04": sec04,
+    "sec05": sec05,
+    "sec06": sec06,
+    "sec07": sec07,
+    "sec08": sec08,
+    "sec09": sec09,
+    "sec10": sec10,
+    "sec11": sec11,
+    "sec12": sec12,
+}
+
+data = {
+    "meta": meta,
+    "header": header,
+    "sections": sections,
+    "footer": footer,
+}
+
+out_path = r"D:\temp\Output\stock-financial-reports\data\asts-q3-2026-sections.json"
+with open(out_path, 'w', encoding='utf-8') as f:
+    json.dump(data, f, ensure_ascii=False, indent=2)
+
+# 验证可解析
+with open(out_path, 'r', encoding='utf-8') as f:
+    json.load(f)
+print(f"sections JSON 生成成功: {out_path}")
+print(f"大小: {os.path.getsize(out_path)/1024:.1f} KB")

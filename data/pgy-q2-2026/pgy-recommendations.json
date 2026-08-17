@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "PGY",
+    "period": "2026-07-01",
+    "strongBuy": 5,
+    "buy": 9,
+    "hold": 1,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "PGY",
+    "period": "2026-06-01",
+    "strongBuy": 5,
+    "buy": 8,
+    "hold": 1,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "PGY",
+    "period": "2026-05-01",
+    "strongBuy": 5,
+    "buy": 8,
+    "hold": 2,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "PGY",
+    "period": "2026-04-01",
+    "strongBuy": 5,
+    "buy": 8,
+    "hold": 2,
+    "sell": 0,
+    "strongSell": 0
+  }
+]

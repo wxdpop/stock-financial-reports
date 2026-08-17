@@ -1,0 +1,16 @@
+{
+  "ticker": "CLS.TO",
+  "name": "Celestica Inc",
+  "country": "CA",
+  "currency": "USD",
+  "estimateCurrency": "USD",
+  "exchange": "TORONTO STOCK EXCHANGE",
+  "ipo": "1998-07-01",
+  "marketCapitalization": 55735.267898,
+  "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/CLS.TO.png",
+  "shareOutstanding": 114.98,
+  "finnhubIndustry": "Electrical Equipment",
+  "phone": "14164485800",
+  "weburl": "https://www.celestica.com/",
+  "floatingShare": 113.72
+}

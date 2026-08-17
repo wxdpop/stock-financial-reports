@@ -1,0 +1,16 @@
+{
+  "ticker": "TLN",
+  "name": "Talen Energy Corp",
+  "country": "US",
+  "currency": "USD",
+  "estimateCurrency": "USD",
+  "exchange": "NASDAQ NMS - GLOBAL MARKET",
+  "ipo": "2015-06-04",
+  "marketCapitalization": 17172.47007106801,
+  "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/950429441216.png",
+  "shareOutstanding": 45.4,
+  "finnhubIndustry": "Utilities",
+  "phone": "18009279800",
+  "weburl": "https://www.talenenergy.com/",
+  "floatingShare": 42.29
+}

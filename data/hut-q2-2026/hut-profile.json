@@ -1,0 +1,16 @@
+{
+  "ticker": "HUT",
+  "name": "Hut 8 Corp",
+  "country": "US",
+  "currency": "USD",
+  "estimateCurrency": "USD",
+  "exchange": "TORONTO STOCK EXCHANGE",
+  "ipo": "2012-04-10",
+  "marketCapitalization": 11444.065383203426,
+  "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/950841908566.png",
+  "shareOutstanding": 93.51,
+  "finnhubIndustry": "Technology",
+  "phone": "13052246427",
+  "weburl": "https://hut8.com/",
+  "floatingShare": 38.66
+}

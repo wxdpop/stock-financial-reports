@@ -1,0 +1,16 @@
+{
+  "ticker": "OPFI",
+  "name": "OppFi Inc",
+  "country": "US",
+  "currency": "USD",
+  "estimateCurrency": "USD",
+  "exchange": "NEW YORK STOCK EXCHANGE, INC.",
+  "ipo": "2020-09-30",
+  "marketCapitalization": 607.534848483965,
+  "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/950763868016.png",
+  "shareOutstanding": 85.39,
+  "finnhubIndustry": "Financial Services",
+  "phone": "13122128079",
+  "weburl": "https://www.oppfi.com/",
+  "floatingShare": 33.73
+}

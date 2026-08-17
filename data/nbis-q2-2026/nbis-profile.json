@@ -1,0 +1,16 @@
+{
+  "ticker": "NBIS",
+  "name": "Nebius Group NV",
+  "country": "NL",
+  "currency": "USD",
+  "estimateCurrency": "USD",
+  "exchange": "NASDAQ NMS - GLOBAL MARKET",
+  "ipo": "2011-05-01",
+  "marketCapitalization": 65227.79184782487,
+  "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/942983351666.png",
+  "shareOutstanding": 253.9,
+  "finnhubIndustry": "Technology",
+  "phone": "31202066970",
+  "weburl": "https://group.nebius.com/",
+  "floatingShare": 212.19
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "TLN",
+    "period": "2026-08-01",
+    "strongBuy": 4,
+    "buy": 16,
+    "hold": 3,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "TLN",
+    "period": "2026-07-01",
+    "strongBuy": 5,
+    "buy": 15,
+    "hold": 3,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "TLN",
+    "period": "2026-06-01",
+    "strongBuy": 6,
+    "buy": 15,
+    "hold": 2,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "TLN",
+    "period": "2026-05-01",
+    "strongBuy": 6,
+    "buy": 15,
+    "hold": 2,
+    "sell": 0,
+    "strongSell": 0
+  }
+]

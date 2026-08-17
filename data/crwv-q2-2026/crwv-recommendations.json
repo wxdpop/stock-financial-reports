@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "CRWV",
+    "period": "2026-08-01",
+    "strongBuy": 10,
+    "buy": 21,
+    "hold": 12,
+    "sell": 1,
+    "strongSell": 1
+  },
+  {
+    "symbol": "CRWV",
+    "period": "2026-07-01",
+    "strongBuy": 10,
+    "buy": 19,
+    "hold": 13,
+    "sell": 1,
+    "strongSell": 1
+  },
+  {
+    "symbol": "CRWV",
+    "period": "2026-06-01",
+    "strongBuy": 10,
+    "buy": 17,
+    "hold": 13,
+    "sell": 1,
+    "strongSell": 1
+  },
+  {
+    "symbol": "CRWV",
+    "period": "2026-05-01",
+    "strongBuy": 10,
+    "buy": 18,
+    "hold": 12,
+    "sell": 1,
+    "strongSell": 1
+  }
+]

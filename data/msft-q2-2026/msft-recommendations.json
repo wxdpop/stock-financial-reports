@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "MSFT",
+    "period": "2026-07-01",
+    "strongBuy": 23,
+    "buy": 40,
+    "hold": 5,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "MSFT",
+    "period": "2026-06-01",
+    "strongBuy": 23,
+    "buy": 38,
+    "hold": 5,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "MSFT",
+    "period": "2026-05-01",
+    "strongBuy": 24,
+    "buy": 36,
+    "hold": 6,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "MSFT",
+    "period": "2026-04-01",
+    "strongBuy": 23,
+    "buy": 36,
+    "hold": 6,
+    "sell": 0,
+    "strongSell": 0
+  }
+]

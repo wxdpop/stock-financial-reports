@@ -1,0 +1,16 @@
+{
+  "ticker": "RKLB",
+  "name": "Rocket Lab Corp",
+  "country": "US",
+  "currency": "USD",
+  "estimateCurrency": "USD",
+  "exchange": "NASDAQ NMS - GLOBAL MARKET",
+  "ipo": "2020-11-16",
+  "marketCapitalization": 47927.875963793274,
+  "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/950811866506.png",
+  "shareOutstanding": 598.18,
+  "finnhubIndustry": "Aerospace & Defense",
+  "phone": "13026587581",
+  "weburl": "https://rocketlabcorp.com/",
+  "floatingShare": 593.29
+}

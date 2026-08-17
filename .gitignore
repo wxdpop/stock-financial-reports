@@ -4,3 +4,18 @@ config.local.json
 .parent-init-done.json
 __pycache__/
 *.pyc
+
+# 排除部署临时目录
+.wrangler/
+cf-pages-deploy/
+
+# 排除临时生成脚本和图表
+data/_*.py
+data/gen-*.py
+data/generate-*.py
+data/fix_*.py
+data/inline_*.py
+data/inspect_*.py
+data/charts.js
+data/*-charts.js
+data/readiness-*.json

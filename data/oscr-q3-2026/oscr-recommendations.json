@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "OSCR",
+    "period": "2026-08-01",
+    "strongBuy": 2,
+    "buy": 7,
+    "hold": 9,
+    "sell": 1,
+    "strongSell": 0
+  },
+  {
+    "symbol": "OSCR",
+    "period": "2026-07-01",
+    "strongBuy": 2,
+    "buy": 7,
+    "hold": 9,
+    "sell": 1,
+    "strongSell": 0
+  },
+  {
+    "symbol": "OSCR",
+    "period": "2026-06-01",
+    "strongBuy": 2,
+    "buy": 6,
+    "hold": 9,
+    "sell": 2,
+    "strongSell": 0
+  },
+  {
+    "symbol": "OSCR",
+    "period": "2026-05-01",
+    "strongBuy": 2,
+    "buy": 6,
+    "hold": 8,
+    "sell": 2,
+    "strongSell": 0
+  }
+]

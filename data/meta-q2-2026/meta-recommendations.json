@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "META",
+    "period": "2026-08-01",
+    "strongBuy": 21,
+    "buy": 41,
+    "hold": 9,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "META",
+    "period": "2026-07-01",
+    "strongBuy": 21,
+    "buy": 42,
+    "hold": 8,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "META",
+    "period": "2026-06-01",
+    "strongBuy": 22,
+    "buy": 41,
+    "hold": 9,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "META",
+    "period": "2026-05-01",
+    "strongBuy": 24,
+    "buy": 40,
+    "hold": 9,
+    "sell": 0,
+    "strongSell": 0
+  }
+]

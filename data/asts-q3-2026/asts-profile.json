@@ -1,0 +1,16 @@
+{
+  "ticker": "ASTS",
+  "name": "AST SpaceMobile Inc",
+  "country": "US",
+  "currency": "USD",
+  "estimateCurrency": "USD",
+  "exchange": "NASDAQ NMS - GLOBAL MARKET",
+  "ipo": "2019-09-13",
+  "marketCapitalization": 27758.6674334243,
+  "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/950711601196.png",
+  "shareOutstanding": 388.12,
+  "finnhubIndustry": "Telecommunication",
+  "phone": "13023513367",
+  "weburl": "https://ast-science.com/spacemobile/",
+  "floatingShare": 275.43
+}

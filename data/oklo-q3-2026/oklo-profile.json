@@ -1,0 +1,16 @@
+{
+  "ticker": "OKLO",
+  "name": "Oklo Inc",
+  "country": "US",
+  "currency": "USD",
+  "estimateCurrency": "USD",
+  "exchange": "NEW YORK STOCK EXCHANGE, INC.",
+  "ipo": "2021-07-12",
+  "marketCapitalization": 8640.52025265566,
+  "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/950800337796.png",
+  "shareOutstanding": 173.99,
+  "finnhubIndustry": "Utilities",
+  "phone": "16505500127",
+  "weburl": "https://oklo.com/",
+  "floatingShare": 146.08
+}

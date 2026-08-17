@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "ARM",
+    "period": "2026-07-01",
+    "strongBuy": 5,
+    "buy": 23,
+    "hold": 14,
+    "sell": 1,
+    "strongSell": 1
+  },
+  {
+    "symbol": "ARM",
+    "period": "2026-06-01",
+    "strongBuy": 5,
+    "buy": 23,
+    "hold": 14,
+    "sell": 1,
+    "strongSell": 1
+  },
+  {
+    "symbol": "ARM",
+    "period": "2026-05-01",
+    "strongBuy": 6,
+    "buy": 23,
+    "hold": 14,
+    "sell": 1,
+    "strongSell": 1
+  },
+  {
+    "symbol": "ARM",
+    "period": "2026-04-01",
+    "strongBuy": 6,
+    "buy": 24,
+    "hold": 13,
+    "sell": 1,
+    "strongSell": 1
+  }
+]

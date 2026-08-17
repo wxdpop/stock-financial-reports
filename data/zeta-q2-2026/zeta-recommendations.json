@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "ZETA",
+    "period": "2026-08-01",
+    "strongBuy": 6,
+    "buy": 13,
+    "hold": 3,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "ZETA",
+    "period": "2026-07-01",
+    "strongBuy": 5,
+    "buy": 13,
+    "hold": 3,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "ZETA",
+    "period": "2026-06-01",
+    "strongBuy": 5,
+    "buy": 12,
+    "hold": 3,
+    "sell": 0,
+    "strongSell": 0
+  },
+  {
+    "symbol": "ZETA",
+    "period": "2026-05-01",
+    "strongBuy": 5,
+    "buy": 12,
+    "hold": 3,
+    "sell": 0,
+    "strongSell": 0
+  }
+]

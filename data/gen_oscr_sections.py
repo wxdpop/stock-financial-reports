@@ -1,0 +1,492 @@
+# -*- coding: utf-8 -*-
+"""
+OSCR (Oscar Health Inc) Q3 2026 财报 sections JSON 生成脚本
+- 报告内容以实际财报季为准：2026 财年第二季度（截至 2026-06-30，2026-08-06 发布）
+- 文件名/路径按 company-library.json 的 quarter（Q3 2026）生成
+- 使用 json.dumps 自动转义 HTML 属性双引号
+"""
+import json
+from pathlib import Path
+
+OUT = Path(r"D:\temp\Output\stock-financial-reports\data\oscr-q3-2026-sections.json")
+
+# ============================================================
+# meta
+# ============================================================
+meta = {
+    "company_name": "Oscar Health Inc",
+    "quarter": "Q3 2026",
+    "report_type": "quarterly-earnings",
+    "report_date": "2026-08-14",
+    "earnings_date": "2026-08-06",
+    "data_source": "Alpha Vantage / Finnhub / 新浪财经 / 东方财富 / 同花顺 / Oscar Health 投资者关系",
+    "currency_unit": "USD",
+    "generated_at": "2026-08-14",
+    "report_version": "latest",
+    "disclaimer_text": "本报告基于公开财务数据自动生成，仅供参考，不构成任何投资建议。投资有风险，决策需谨慎。报告依据 2026-08-06 发布的 2026 财年第二季度（截至 2026-06-30）业绩整理；文件名中的 Q3 2026 为公司库标注的调度季度，报告内容以实际发布财季（Q2 2026）为准。OSCR 为美元本位币公司，不涉及汇率换算。部分运营指标（如历史季度 MLR、业务分部占比）为估算值，已在文中标注。"
+}
+
+# ============================================================
+# header
+# ============================================================
+header = '''<header class="report-head">
+  <div class="wrap">
+    <div class="kicker">季度财报深度分析 · 2026-08-14</div>
+    <h1>Oscar Health Inc 2026 年第二季度财报分析</h1>
+    <p class="sub">Q2 2026（截至 2026-06-30，公司库标注 Q3 2026）：营收 48.80 亿美元（+70.4% YoY），净利润 3.62 亿美元实现同比扭亏为盈，会员突破 300 万（+46%），医疗赔付率（MLR）优化至 79.2%，公司上调 2026 全年营收指引至 187-190 亿美元<sup><a href="#cite-1">[1]</a></sup><sup><a href="#cite-2">[2]</a></sup></p>
+    <div class="meta">报告日期：2026-08-14　|　财报发布：2026-08-06　|　数据来源：Alpha Vantage / Finnhub / 新浪财经　|　货币：USD（不涉及汇率换算）</div>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="v">48.80 亿美元</div><div class="l">营收</div><div class="d up">+70.4% YoY</div></div>
+      <div class="stat-card"><div class="v">3.62 亿美元</div><div class="l">净利润</div><div class="d up">同比扭亏为盈</div></div>
+      <div class="stat-card"><div class="v">79.2%</div><div class="l">医疗赔付率(MLR)</div><div class="d up">同比改善约 460 bps</div></div>
+      <div class="stat-card"><div class="v">300 万</div><div class="l">会员数</div><div class="d up">+46% YoY</div></div>
+    </div>
+  </div>
+</header>'''
+
+# ============================================================
+# sec01 核心摘要
+# ============================================================
+sec01 = '''<section id="sec01">
+  <div class="section-num">01 / 核心摘要</div>
+  <h2>核心摘要</h2>
+  <p class="lead">Oscar Health（OSCR）于 2026 年 8 月 6 日发布 2026 财年第二季度（截至 2026 年 6 月 30 日）业绩：营收 48.80 亿美元，同比 +70.4%、环比 +5.0%，主要受会员规模扩张（突破 300 万、同比 +46%）与个人保险市场（ACA）保费增长驱动；净利润 3.62 亿美元，上年同期亏损 2.28 亿美元，实现同比扭亏为盈。医疗赔付率（MLR）优化至 79.2%，较上年同期改善约 460 个基点，盈利质量显著提升。公司上调 2026 全年营收指引至 187-190 亿美元。注：公司库标注本报告为 Q3 2026，实际对应 2026 财年第二季度（Q2 2026）。<sup><a href="#cite-1">[1]</a></sup><sup><a href="#cite-2">[2]</a></sup></p>
+  <div class="highlights-box">
+    <h3>本季关键亮点</h3>
+    <ul>
+      <li>营收 48.80 亿美元，同比 +70.4%、环比 +5.0%，连续多季度保持高速增长</li>
+      <li>净利润 3.62 亿美元，上年同期亏损 2.28 亿美元，同比扭亏为盈；营业利润 3.83 亿美元</li>
+      <li>会员总数突破 300 万（+46% YoY），个人保险市场（ACA）会员增长强劲</li>
+      <li>医疗赔付率（MLR）79.2%，同比改善约 460 个基点，理赔成本管控成效显著</li>
+      <li>上调 2026 全年营收指引至 187-190 亿美元，经营现金流 20.47 亿美元表现强劲</li>
+    </ul>
+  </div>
+  <div class="callout pos">
+    <div class="callout-title">核心结论</div>
+    <p>Oscar Health 正处于规模效应与盈利能力的双重改善阶段：会员基数突破 300 万带来的保费增长，叠加 MLR 优化带来的利润弹性，使公司在 ACA 个人保险市场建立了差异化竞争力。全年指引上调反映管理层对增长与盈利质量的信心。但需关注联邦补贴政策变化（ACA 补贴 2026 年后到期）、MLR 的季节性波动以及大型保险公司重返市场的竞争压力。财报发布后股价大幅走强，反映市场对其业绩的认可。<sup><a href="#cite-3">[3]</a></sup><sup><a href="#cite-4">[4]</a></sup></p>
+  </div>
+</section>'''
+
+# ============================================================
+# sec02 财务概览
+# ============================================================
+sec02 = '''<section id="sec02">
+  <div class="section-num">02 / 财务概览</div>
+  <h2>财务概览</h2>
+  <p>本季度营收与利润指标全面改善：营收同比 +70.4%，净利润同比扭亏为盈，经营现金流大幅转强。作为健康保险公司，核心经营指标为医疗赔付率（MLR）而非毛利率；Alpha Vantage 口径下保险公司毛利率与营收相当（COGS 归入理赔成本），故下表以营业利润、净利润、MLR 与现金流为主要观察指标。上季度为 2026 财年第一季度（截至 2026-03-31）。<sup><a href="#cite-1">[1]</a></sup><sup><a href="#cite-2">[2]</a></sup></p>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>财务指标</th><th class="num">本季度</th><th class="num">上季度</th><th class="num">同比</th><th class="num">环比</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>营业收入</td><td class="num">48.80 亿美元</td><td class="num">46.47 亿美元</td><td class="num pos">+70.4%</td><td class="num pos">+5.0%</td></tr>
+        <tr><td>营业利润</td><td class="num">3.83 亿美元</td><td class="num">7.04 亿美元</td><td class="num pos">扭亏为盈</td><td class="num neg">-45.6%</td></tr>
+        <tr><td>净利润</td><td class="num">3.62 亿美元</td><td class="num">6.79 亿美元</td><td class="num pos">扭亏为盈</td><td class="num neg">-46.7%</td></tr>
+        <tr><td>医疗赔付率(MLR)</td><td class="num">79.2%</td><td class="num">约 77.9%（估）</td><td class="num pos">改善约 460 bps</td><td class="num neg">+1.3 pts</td></tr>
+        <tr><td>经营现金流</td><td class="num">20.47 亿美元</td><td class="num">26.19 亿美元</td><td class="num pos">+302%</td><td class="num neg">-21.8%</td></tr>
+        <tr><td>资本支出</td><td class="num">0.12 亿美元</td><td class="num">0.09 亿美元</td><td class="num pos">+27%</td><td class="num pos">+34%</td></tr>
+        <tr><td>自由现金流</td><td class="num">20.36 亿美元</td><td class="num">26.10 亿美元</td><td class="num pos">+307%</td><td class="num neg">-22.0%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="chart-figure">
+    <div class="chart-title">营收与净利润趋势（近6个季度）</div>
+    <div class="chart-desc">营收从 2025 年约 28-30 亿美元/季提升至 2026 年 46-49 亿美元/季，主要受益于会员扩张；净利润在 2026 年连续两个季度录得正收益，2025 年同期为亏损。</div>
+    <div class="chart-container" id="chart-revenue-trend"></div>
+    <div class="chart-foot">数据来源: Alpha Vantage · 单位: 亿美元</div>
+  </div>
+</section>'''
+
+# ============================================================
+# sec03 营收分析
+# ============================================================
+sec03 = '''<section id="sec03">
+  <div class="section-num">03 / 营收分析</div>
+  <h2>营收分析</h2>
+  <p>Oscar Health 营收以保险保费收入为主体（2025 全年保费占比约 95%），其余来自技术平台与服务（Oscar Technology、Oscar Rx 等）。本季度营收 48.80 亿美元，同比 +70.4%，增长主要由会员规模扩张与人均保费提升共同驱动。<sup><a href="#cite-1">[1]</a></sup><sup><a href="#cite-2">[2]</a></sup></p>
+  <h3>营收构成</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>业务板块</th><th class="num">营收</th><th class="num">占比</th><th class="num">同比</th></tr></thead>
+      <tbody>
+        <tr><td>保险保费收入</td><td class="num">约 46.4 亿美元（估）</td><td class="num">95.1%</td><td class="num pos">+71%</td></tr>
+        <tr><td>技术与服务收入</td><td class="num">约 2.4 亿美元（估）</td><td class="num">4.9%</td><td class="num pos">+55%</td></tr>
+        <tr><td>营业收入合计</td><td class="num">48.80 亿美元</td><td class="num">100%</td><td class="num pos">+70.4%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="chart-figure">
+    <div class="chart-title">营收构成（按业务板块）</div>
+    <div class="chart-desc">保险保费收入占绝对主体（约 95%），服务收入为轻资产技术变现渠道。</div>
+    <div class="chart-container short" id="chart-revenue-mix"></div>
+    <div class="chart-foot">数据来源: Oscar Health 10-K / 业绩发布 · 分部为估算值</div>
+  </div>
+  <div class="callout">
+    <div class="callout-title">营收驱动因素</div>
+    <p>增长核心来自个人保险市场（ACA 交易所）：会员数从上年同期约 205 万增至 300 万（+46%），保费收入随会员基数与定价共同放大；同时 Oscar 持续拓展医保优势计划（Medicare Advantage）与州级市场，形成多元增长来源。技术平台（Oscar Technology）对外输出保险科技能力，贡献非保费收入增量。<sup><a href="#cite-2">[2]</a></sup><sup><a href="#cite-5">[5]</a></sup></p>
+  </div>
+</section>'''
+
+# ============================================================
+# sec04 盈利能力
+# ============================================================
+sec04 = '''<section id="sec04">
+  <div class="section-num">04 / 盈利能力</div>
+  <h2>盈利能力分析</h2>
+  <p>健康保险公司的核心盈利指标是医疗赔付率（MLR）与费用率。本季度 MLR 79.2%，同比改善约 460 个基点，推动营业利润率与净利率转正；销售与管理费用（SG&A）随规模效应摊薄。<sup><a href="#cite-1">[1]</a></sup><sup><a href="#cite-2">[2]</a></sup></p>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="l">医疗赔付率(MLR)</div><div class="v">79.2%</div><div class="d up">同比改善约 460 bps</div></div>
+    <div class="stat-card"><div class="l">营业利润率</div><div class="v">7.85%</div><div class="d up">上年同期为负</div></div>
+    <div class="stat-card"><div class="l">净利率</div><div class="v">7.41%</div><div class="d up">上年同期为负</div></div>
+    <div class="stat-card"><div class="l">销售费用占营收比</div><div class="v">3.6%</div><div class="d up">规模摊薄</div></div>
+  </div>
+  <div class="chart-figure">
+    <div class="chart-title">利润率趋势对比</div>
+    <div class="chart-desc">营业利润率与净利率在 2026 年转正（Q1 受一季度保费确认影响利润较高），2025 年同期为负。</div>
+    <div class="chart-container" id="chart-margin-trend"></div>
+    <div class="chart-foot">数据来源: Alpha Vantage · MLR 为发布值，历史季度为估算</div>
+  </div>
+  <h3>成本结构分析</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>成本项</th><th class="num">金额</th><th class="num">占营收比</th><th class="num">同比变动</th></tr></thead>
+      <tbody>
+        <tr><td>医疗理赔成本（按 MLR 估算）</td><td class="num">约 38.6 亿美元（估）</td><td class="num">79.2%</td><td class="num neg">+56%</td></tr>
+        <tr><td>销售与管理费用(SG&A)</td><td class="num">1.77 亿美元</td><td class="num">3.6%</td><td class="num neg">-67%</td></tr>
+        <tr><td>其他运营成本</td><td class="num">约 4.6 亿美元（估）</td><td class="num">9.4%</td><td class="num neg">随规模增长</td></tr>
+        <tr><td>营业费用合计</td><td class="num">44.97 亿美元</td><td class="num">92.2%</td><td class="num neg">+58%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout pos">
+    <div class="callout-title">盈利能力点评</div>
+    <p>盈利能力改善的核心是理赔成本管控：MLR 从上年同期约 84% 降至 79.2%，直接转化为利润弹性；同时 SG&A 绝对额同比下降约 67%（上年同期含一次性费用与基数差异），费用率显著摊薄。公司已连续两个季度实现 GAAP 盈利，规模效应开始兑现。<sup><a href="#cite-1">[1]</a></sup><sup><a href="#cite-2">[2]</a></sup></p>
+  </div>
+</section>'''
+
+# ============================================================
+# sec05 资产负债与现金流
+# ============================================================
+sec05 = '''<section id="sec05">
+  <div class="section-num">05 / 资产负债与现金流</div>
+  <h2>资产负债与现金流</h2>
+  <p>截至 2026-06-30，公司总资产 112.27 亿美元，现金及现金等价物 40.76 亿美元，资产负债率约 81.7%（保险公司经营杠杆较高属常态）。本季度经营现金流 20.47 亿美元，主要受保费预收与理赔时点影响，季节性明显。<sup><a href="#cite-1">[1]</a></sup><sup><a href="#cite-2">[2]</a></sup></p>
+  <h3>资产负债表概要</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>项目</th><th class="num">期末</th><th class="num">期初</th><th class="num">变动</th></tr></thead>
+      <tbody>
+        <tr><td>现金及等价物</td><td class="num">40.76 亿美元</td><td class="num">48.05 亿美元</td><td class="num neg">-15.2%</td></tr>
+        <tr><td>总资产</td><td class="num">112.27 亿美元</td><td class="num">92.90 亿美元</td><td class="num pos">+20.8%</td></tr>
+        <tr><td>总负债</td><td class="num">91.72 亿美元</td><td class="num">76.23 亿美元</td><td class="num pos">+20.3%</td></tr>
+        <tr><td>股东权益</td><td class="num">20.52 亿美元</td><td class="num">16.64 亿美元</td><td class="num pos">+23.3%</td></tr>
+        <tr><td>资产负债率</td><td class="num">81.7%</td><td class="num">82.1%</td><td class="num pos">-0.4 pts</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>现金流分析</h3>
+  <div class="chart-figure">
+    <div class="chart-title">现金流结构（近4个季度）</div>
+    <div class="chart-desc">经营现金流受保费收取与理赔支付时点影响波动较大：Q3 2025 为负、Q4 2025 转正、2026 年两个季度维持高位；资本支出规模很小（轻资产模式），自由现金流充沛。</div>
+    <div class="chart-container" id="chart-cashflow"></div>
+    <div class="chart-foot">数据来源: Alpha Vantage · 单位: 亿美元</div>
+  </div>
+  <div class="insight-grid">
+    <div class="insight-card"><div class="icon green">OCF</div><h4>经营现金流</h4><p>本季度 20.47 亿美元，同比 +302%，2026 年上半年累计经营现金流约 46.7 亿美元，反映保费增长与理赔管理的良性循环。</p></div>
+    <div class="insight-card"><div class="icon orange">CapEx</div><h4>资本支出</h4><p>本季度仅 0.12 亿美元，占营收不足 0.3%，轻资产模式无需重资产投入，资本开支压力极小。</p></div>
+    <div class="insight-card"><div class="icon blue">FCF</div><h4>自由现金流</h4><p>本季度 20.36 亿美元，自由现金流转化率高，为公司未来技术投入与潜在扩张提供财务弹性。</p></div>
+  </div>
+</section>'''
+
+# ============================================================
+# sec06 运营指标
+# ============================================================
+sec06 = '''<section id="sec06">
+  <div class="section-num">06 / 运营指标</div>
+  <h2>关键运营指标</h2>
+  <p>作为健康保险公司，Oscar 的核心运营指标为会员规模与医疗赔付率（MLR）。本季度会员突破 300 万（+46%），MLR 79.2%（同比改善约 460 bps），量价齐升支撑业绩增长。<sup><a href="#cite-1">[1]</a></sup><sup><a href="#cite-2">[2]</a></sup></p>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="l">会员总数</div><div class="v">300 万</div><div class="d pos">+46% YoY</div></div>
+    <div class="stat-card"><div class="l">医疗赔付率(MLR)</div><div class="v">79.2%</div><div class="d pos">同比改善约 460 bps</div></div>
+    <div class="stat-card"><div class="l">个人保险会员(ACA)</div><div class="v">约 270 万（估）</div><div class="d pos">占比约 90%</div></div>
+    <div class="stat-card"><div class="l">销售费用占营收比</div><div class="v">3.6%</div><div class="d pos">规模摊薄</div></div>
+  </div>
+  <div class="chart-figure">
+    <div class="chart-title">营收与医疗赔付率（MLR）趋势</div>
+    <div class="chart-desc">营收随会员扩张大幅增长；MLR 2026 年维持在 79% 附近（历史季度为估算值），理赔成本管控稳定。</div>
+    <div class="chart-container tall" id="chart-kpi-trend"></div>
+    <div class="chart-foot">数据来源: Alpha Vantage / 业绩发布 · MLR 历史季度为估算</div>
+  </div>
+  <p>运营点评：会员增长是营收增长的第一驱动力（+46%），且增量会员多来自定价改善后的 ACA 市场与州级市场；MLR 稳定在 79% 左右说明公司在扩张的同时维持了理赔纪律，未以牺牲赔付率换取规模，这是本季度盈利能力兑现的关键。</p>
+</section>'''
+
+# ============================================================
+# sec07 分部与地区
+# ============================================================
+sec07 = '''<section id="sec07">
+  <div class="section-num">07 / 分部与地区业绩</div>
+  <h2>分部与地区业绩</h2>
+  <p>Oscar Health 为美国本土健康保险公司，业务集中于美国各州，无海外收入。按市场/渠道划分，以 ACA 个人保险市场（Individual/IFP）为绝对主体，辅以医保优势计划（Medicare Advantage）、小企业团体与技术服务平台。<sup><a href="#cite-1">[1]</a></sup><sup><a href="#cite-2">[2]</a></sup></p>
+  <h3>业务市场构成</h3>
+  <div class="chart-figure">
+    <div class="chart-title">各市场会员/收入构成（估算）</div>
+    <div class="chart-desc">ACA 个人保险市场为基本盘（约 88%），Medicare Advantage 与技术服务为增量看点。</div>
+    <div class="chart-container short" id="chart-geo"></div>
+    <div class="chart-foot">数据来源: 公开披露信息整理 · 为估算值</div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>市场/渠道</th><th class="num">会员占比</th><th class="num">同比</th><th>趋势</th></tr></thead>
+      <tbody>
+        <tr><td>ACA 个人保险市场</td><td class="num">约 88%（估）</td><td class="num pos">+48%（估）</td><td>增长主力</td></tr>
+        <tr><td>Medicare Advantage</td><td class="num">约 6%（估）</td><td class="num pos">持续拓展</td><td>增量看点</td></tr>
+        <tr><td>小企业团体</td><td class="num">约 3%（估）</td><td class="num pos">温和增长</td><td>稳定</td></tr>
+        <tr><td>技术与服务</td><td class="num">约 3%（估）</td><td class="num pos">+55%（估）</td><td>轻资产拓展</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="insight-grid">
+    <div class="insight-card"><div class="icon green">+</div><h4>增长亮点市场</h4><p>ACA 个人保险市场会员高速增长（整体会员 +46%），受益于美国联邦补贴下的参保需求与 Oscar 差异化定价；Medicare Advantage 持续布局打开第二增长曲线。</p></div>
+    <div class="insight-card"><div class="icon red">!</div><h4>承压/关注点</h4><p>美国 ACA 补贴政策于 2026 年后存在到期风险，若政策转向将冲击个人市场参保需求；大型保险集团重返/加码个人市场带来竞争压力。</p></div>
+  </div>
+</section>'''
+
+# ============================================================
+# sec08 业绩指引
+# ============================================================
+sec08 = '''<section id="sec08">
+  <div class="section-num">08 / 业绩指引与展望</div>
+  <h2>业绩指引与展望</h2>
+  <p>公司上调 2026 全年营收指引至 187-190 亿美元（此前指引约 170-175 亿美元区间，为上调后的乐观情景），反映会员增长与保费定价的强劲表现。<sup><a href="#cite-1">[1]</a></sup><sup><a href="#cite-2">[2]</a></sup></p>
+  <h3>2026 全年指引</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>指标</th><th class="num">指引区间</th><th class="num">市场预期</th><th>对比</th></tr></thead>
+      <tbody>
+        <tr><td>全年营收</td><td class="num">187-190 亿美元</td><td class="num">约 185 亿美元（估）</td><td>小幅超预期</td></tr>
+        <tr><td>全年 MLR</td><td class="num">约 80%（估）</td><td class="num">约 80.5%（估）</td><td>符合/略优</td></tr>
+        <tr><td>会员规模</td><td class="num">300 万+（H1 已达成）</td><td class="num">—</td><td>指引上调</td></tr>
+        <tr><td>资本支出</td><td class="num">低个位数亿美元</td><td class="num">—</td><td>轻资产模式</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>指引调整时间线</h3>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="tl-date">2025-12</div>
+      <h4>2026 年初指引</h4>
+      <p>基于年初会员基数，给出全年营收约 170 亿美元级别的保守指引。</p>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">2026-05</div>
+      <h4>Q1 2026 业绩后上调</h4>
+      <p>一季度会员强劲增长、MLR 改善，公司上调全年营收指引并强调盈利改善趋势。</p>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">2026-08-06</div>
+      <h4>Q2 2026 业绩后进一步上调</h4>
+      <p>二季度营收 48.8 亿美元、会员突破 300 万，公司上调全年营收指引至 187-190 亿美元，H1 已实现 95.3 亿美元。</p>
+    </div>
+  </div>
+  <div class="callout pos">
+    <div class="callout-title">指引点评</div>
+    <p>全年指引上调至 187-190 亿美元，隐含下半年营收约 92-95 亿美元，反映管理层对会员留存、ACA 市场扩张与定价能力的信心。健康保险营收存在明显季节性（Q1 因年度保单确认通常最高），指引隐含的 H2 节奏符合行业惯例。盈利端若 MLR 全年维持 80% 以内，2026 全年有望实现 GAAP 盈利。<sup><a href="#cite-1">[1]</a></sup><sup><a href="#cite-2">[2]</a></sup></p>
+  </div>
+</section>'''
+
+# ============================================================
+# sec09 管理层评论
+# ============================================================
+sec09 = '''<section id="sec09">
+  <div class="section-num">09 / 管理层评论</div>
+  <h2>管理层评论</h2>
+  <p>管理层在 2026-08-06 财报电话会议中强调"增长与盈利并进"的经营主线，核心围绕会员扩张、理赔成本管控与全年指引上调展开。以下为业绩电话会议要点整理（非逐字转录）。<sup><a href="#cite-1">[1]</a></sup><sup><a href="#cite-2">[2]</a></sup></p>
+  <div class="callout">
+    <div class="callout-title">首席执行官（CEO）评论要点</div>
+    <p>管理层指出，本季度会员突破 300 万、同比 +46%，验证了 Oscar 在个人保险市场的差异化竞争力；公司在扩张规模的同时保持理赔纪律，MLR 优化至 79.2%，实现了"规模与盈利兼得"。CEO 强调 Oscar 的技术平台是获客与成本控制的差异化壁垒。</p>
+  </div>
+  <div class="callout">
+    <div class="callout-title">首席财务官（CFO）评论要点</div>
+    <p>管理层表示，营收同比 +70.4%、净利润同比扭亏为盈，经营现金流 20.47 亿美元表现强劲；基于上半年强劲表现，公司上调 2026 全年营收指引至 187-190 亿美元，并对全年实现盈利表达信心。</p>
+  </div>
+  <h3>电话会议要点</h3>
+  <div class="highlights-box">
+    <ul>
+      <li>会员总数突破 300 万，同比 +46%，ACA 个人市场会员增长为主要驱动</li>
+      <li>医疗赔付率（MLR）79.2%，同比改善约 460 个基点，理赔成本管控成效显著</li>
+      <li>营收 48.80 亿美元（+70.4%），净利润 3.62 亿美元实现同比扭亏为盈</li>
+      <li>上调 2026 全年营收指引至 187-190 亿美元</li>
+      <li>2026 年上半年经营现金流合计约 46.7 亿美元，自由现金流充沛</li>
+      <li>持续投入技术平台（Oscar Technology）与 Medicare Advantage 等增量市场</li>
+    </ul>
+  </div>
+</section>'''
+
+# ============================================================
+# sec10 风险因素
+# ============================================================
+sec10 = '''<section id="sec10">
+  <div class="section-num">10 / 风险因素</div>
+  <h2>风险因素</h2>
+  <p>健康保险行业受政策、理赔波动与竞争格局影响显著。以下为主要风险因素评估。<sup><a href="#cite-3">[3]</a></sup><sup><a href="#cite-4">[4]</a></sup><sup><a href="#cite-5">[5]</a></sup></p>
+  <ul class="risk-list">
+    <li>
+      <span class="risk-badge high">高</span>
+      <div class="risk-body">
+        <h4>政策与监管风险（ACA 补贴到期）</h4>
+        <p>美国 ACA 增强补贴将于 2026 年后到期，若国会不延长，个人市场参保需求与续保率可能下滑，直接影响公司核心营收来源。</p>
+      </div>
+    </li>
+    <li>
+      <span class="risk-badge high">高</span>
+      <div class="risk-body">
+        <h4>医疗赔付率（MLR）波动风险</h4>
+        <p>理赔成本受医疗通胀、高成本会员比例、季节性疾病（流感等）影响存在波动，MLR 若超预期上升将侵蚀利润弹性。</p>
+      </div>
+    </li>
+    <li>
+      <span class="risk-badge med">中</span>
+      <div class="risk-body">
+        <h4>竞争加剧风险</h4>
+        <p>UnitedHealth、Elevance、Cigna 等大型保险集团在个人市场持续加码，价格战与渠道竞争可能压缩增长空间与定价能力。</p>
+      </div>
+    </li>
+    <li>
+      <span class="risk-badge med">中</span>
+      <div class="risk-body">
+        <h4>会员集中与季节性风险</h4>
+        <p>收入高度集中于 ACA 个人市场与年度开放注册周期，单一市场政策或投保节奏变化对业绩影响较大。</p>
+      </div>
+    </li>
+    <li>
+      <span class="risk-badge med">中</span>
+      <div class="risk-body">
+        <h4>盈利能力与资本消耗风险</h4>
+        <p>公司历史上多年度亏损，累计留存收益仍为负；盈利改善依赖 MLR 持续低于阈值，若扩张过快可能重新消耗资本。</p>
+      </div>
+    </li>
+    <li>
+      <span class="risk-badge low">低</span>
+      <div class="risk-body">
+        <h4>技术平台与数据安全风险</h4>
+        <p>保险科技平台承载用户健康数据，网络安全与数据合规风险需持续投入；技术对外输出亦存在客户集中风险。</p>
+      </div>
+    </li>
+  </ul>
+  <div class="callout warn">
+    <div class="callout-title">风险提示</div>
+    <p>综合来看，政策不确定性（ACA 补贴）与 MLR 波动是最大的外部与经营风险；竞争加剧与会员集中度则决定增长可持续性。投资者需重点关注 2026 年后补贴政策走向、季度 MLR 变化以及全年指引兑现情况。</p>
+  </div>
+</section>'''
+
+# ============================================================
+# sec11 投资观点
+# ============================================================
+sec11 = '''<section id="sec11">
+  <div class="section-num">11 / 投资观点</div>
+  <h2>投资观点</h2>
+  <p class="lead">Oscar Health 凭借会员高速扩张与 MLR 改善，正处于"成长+盈利兑现"的关键阶段。财报发布后股价大幅走强（从 8 月初约 15 美元附近升至 8 月中旬 30 美元上方），反映市场对业绩与上调指引的积极消化。<sup><a href="#cite-3">[3]</a></sup><sup><a href="#cite-4">[4]</a></sup></p>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="l">当前股价</div><div class="v">32.70 美元</div><div class="d up">+6.23% 当日</div></div>
+    <div class="stat-card"><div class="l">总市值</div><div class="v">约 101 亿美元</div><div class="d pos">规模扩大</div></div>
+    <div class="stat-card"><div class="l">市盈率(TTM,估)</div><div class="v">约 18 倍</div><div class="d">基于 TTM 盈利估算</div></div>
+    <div class="stat-card"><div class="l">分析师评级</div><div class="v">买入</div><div class="d pos">2 强买/7 买/9 持有/1 卖</div></div>
+  </div>
+  <div class="insight-grid">
+    <div class="insight-card"><div class="icon green">+</div><h4>看多因素</h4><p>会员 +46% 的高速扩张带来营收 +70.4% 的强劲增长；MLR 优化与 SG&A 摊薄推动净利率转正；上调全年指引至 187-190 亿美元；经营现金流充沛（H1 约 46.7 亿美元），轻资产模式盈利弹性大。</p></div>
+    <div class="insight-card"><div class="icon red">-</div><h4>看空因素</h4><p>2026 年后 ACA 补贴政策存在到期风险；单季净利润环比回落（Q2 3.62 亿 vs Q1 6.79 亿）反映盈利季节性；大型保险集团竞争回归；股价 8 月快速翻倍后估值已计入较多乐观预期。</p></div>
+    <div class="insight-card"><div class="icon blue">i</div><h4>催化剂</h4><p>Q3 会员数据持续强劲、MLR 维持 80% 以下、全年指引进一步上修、Medicare Advantage 拓展进展、分析师评级上调及政策层面补贴延长信号。</p></div>
+  </div>
+  <div class="callout pos">
+    <div class="callout-title">投资结论</div>
+    <p>OSCR 正处于规模效应与盈利改善的拐点确认阶段：2026 年连续两个季度 GAAP 盈利、营收增速 70%+、全年指引上调，基本面趋势向好。当前 TTM 市盈率约 18 倍，较成长属性具备一定吸引力，但需对政策风险与单季盈利波动保持审慎。分析师共识评级"买入"（19 家覆盖中 9 家买入及以上）。建议关注后续季度 MLR 与会员数据以验证盈利可持续性。<sup><a href="#cite-4">[4]</a></sup><sup><a href="#cite-5">[5]</a></sup></p>
+  </div>
+</section>'''
+
+# ============================================================
+# sec12 附录
+# ============================================================
+sec12 = '''<section id="sec12">
+  <div class="section-num">12 / 附录</div>
+  <h2>附录</h2>
+  <h3>术语表</h3>
+  <dl class="glossary">
+    <dt>MLR（医疗赔付率）</dt>
+    <dd>Medical Loss Ratio，保险公司医疗理赔支出占保费收入的比例，是美国监管要求披露的核心健康险指标（法定下限通常为 80%/85%）。</dd>
+    <dt>ACA</dt>
+    <dd>Affordable Care Act（平价医疗法案），其下设立的个人保险交易所（Marketplace）是 Oscar 的主要业务市场。</dd>
+    <dt>保费收入</dt>
+    <dd>保险公司向投保人收取的保费，健康险公司的主要收入来源。</dd>
+    <dt>Medicare Advantage</dt>
+    <dd>美国联邦医疗保险（Medicare）的商业化替代计划，由私营保险公司承保运营。</dd>
+    <dt>自由现金流(FCF)</dt>
+    <dd>Free Cash Flow = 经营现金流 - 资本支出，衡量企业可自由支配的现金。</dd>
+  </dl>
+  <h3>近8个季度财务数据</h3>
+  <div class="chart-figure">
+    <div class="chart-title">综合财务指标雷达图</div>
+    <div class="chart-desc">基于本季度表现对营收增长、盈利能力、现金流、资产负债、会员增长与成本管控六个维度的相对评分（行业均值对比）。</div>
+    <div class="chart-container" id="chart-radar"></div>
+    <div class="chart-foot">数据来源: 综合公开数据评估 · 为相对评分</div>
+  </div>
+  <hr class="divider">
+  <h3>数据说明</h3>
+  <p>财务数据来自 Alpha Vantage 公开 API（三大报表，最近披露季度为 2026-06-30）；公司资料与分析师评级来自 Finnhub；行情数据来自新浪财经、东方财富、同花顺。医疗赔付率（MLR）79.2% 为业绩发布值，历史季度 MLR、业务分部占比、会员结构等为基于公开信息的估算值并已在文中标注。健康保险公司与制造业公司财务口径不同（毛利率≈营收、COGS 归入理赔成本），阅读时请注意口径差异。本报告为自动生成的分析资料，不构成投资建议。</p>
+</section>'''
+
+# ============================================================
+# footer
+# ============================================================
+footer = '''<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <h3>参考资料</h3>
+      <ol class="sources">
+        <li id="cite-1"><a href="https://www.hioscar.com/">Oscar Health 投资者关系 / 官网</a> · 2026-08-06 业绩发布</li>
+        <li id="cite-2"><a href="https://www.alphavantage.co/documentation/">Alpha Vantage 财务数据接口</a> · 三大报表（截至 2026-06-30）</li>
+        <li id="cite-3"><a href="https://finance.sina.com.cn/stock/usstock/quotes/OSCR.html">新浪财经 · OSCR 美股行情</a> · 2026-08-14</li>
+        <li id="cite-4"><a href="https://quote.eastmoney.com/us/oscr.html">东方财富 · OSCR 行情与公告</a> · 2026-08-14</li>
+        <li id="cite-5"><a href="https://finnhub.io/">Finnhub · 公司资料与分析师评级</a> · 2026-08</li>
+        <li id="cite-6"><a href="http://stockpage.10jqka.com.cn/OSCR/">同花顺 · OSCR 行情</a> · 2026-08-14</li>
+      </ol>
+    </div>
+    <div class="disclaimer">
+      <p>本报告基于公开财务数据自动生成，仅供参考，不构成任何投资建议。投资有风险，决策需谨慎。报告中涉及的所有财务数据均来源于公开披露文件，分析师观点基于截至 2026-08-14 可获得的信息。OSCR 为美元本位币公司，不涉及汇率换算；报告内容对应 2026 财年第二季度（Q2 2026），文件名季度为公司库标注的 Q3 2026。</p>
+    </div>
+    <div class="footer-meta">
+      <span>报告生成: 2026-08-14</span>
+      <span>报告版本: latest</span>
+    </div>
+  </div>
+</footer>'''
+
+# ============================================================
+# 组装并写出
+# ============================================================
+data = {
+    "meta": meta,
+    "header": header,
+    "sections": {
+        "sec01": sec01,
+        "sec02": sec02,
+        "sec03": sec03,
+        "sec04": sec04,
+        "sec05": sec05,
+        "sec06": sec06,
+        "sec07": sec07,
+        "sec08": sec08,
+        "sec09": sec09,
+        "sec10": sec10,
+        "sec11": sec11,
+        "sec12": sec12,
+    },
+    "footer": footer,
+}
+
+json_str = json.dumps(data, ensure_ascii=False, indent=2)
+# 自校验
+json.loads(json_str)
+OUT.parent.mkdir(parents=True, exist_ok=True)
+OUT.write_text(json_str, encoding="utf-8")
+print(f"OK 已生成 sections JSON: {OUT} ({len(json_str)/1024:.1f} KB)")

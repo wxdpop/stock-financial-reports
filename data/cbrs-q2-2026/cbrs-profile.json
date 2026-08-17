@@ -1,0 +1,16 @@
+{
+  "ticker": "CBRS",
+  "name": "Cerebras Systems Inc",
+  "country": "US",
+  "currency": "USD",
+  "estimateCurrency": "USD",
+  "exchange": "NASDAQ NMS - GLOBAL MARKET",
+  "ipo": "2026-05-14",
+  "marketCapitalization": 46645.4634847814,
+  "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/CBRS.png",
+  "shareOutstanding": 226.53,
+  "finnhubIndustry": "Semiconductors",
+  "phone": "13025310855",
+  "weburl": "https://www.cerebras.ai",
+  "floatingShare": 91.76
+}

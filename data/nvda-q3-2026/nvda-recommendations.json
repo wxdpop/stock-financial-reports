@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "NVDA",
+    "period": "2026-08-01",
+    "strongBuy": 23,
+    "buy": 41,
+    "hold": 3,
+    "sell": 1,
+    "strongSell": 0
+  },
+  {
+    "symbol": "NVDA",
+    "period": "2026-07-01",
+    "strongBuy": 24,
+    "buy": 40,
+    "hold": 4,
+    "sell": 1,
+    "strongSell": 0
+  },
+  {
+    "symbol": "NVDA",
+    "period": "2026-06-01",
+    "strongBuy": 24,
+    "buy": 39,
+    "hold": 4,
+    "sell": 1,
+    "strongSell": 0
+  },
+  {
+    "symbol": "NVDA",
+    "period": "2026-05-01",
+    "strongBuy": 24,
+    "buy": 42,
+    "hold": 4,
+    "sell": 1,
+    "strongSell": 0
+  }
+]

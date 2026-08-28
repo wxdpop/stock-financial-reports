@@ -1,0 +1,16 @@
+{
+  "ticker": "MRVL",
+  "name": "Marvell Technology Inc",
+  "country": "US",
+  "currency": "USD",
+  "estimateCurrency": "USD",
+  "exchange": "NASDAQ NMS - GLOBAL MARKET",
+  "ipo": "2000-06-27",
+  "marketCapitalization": 211453.8022634586,
+  "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/MRVL.png",
+  "shareOutstanding": 875.77,
+  "finnhubIndustry": "Semiconductors",
+  "phone": "13022954840",
+  "weburl": "https://www.marvell.com/",
+  "floatingShare": 869.11
+}

@@ -1,0 +1,16 @@
+{
+  "ticker": "WMT",
+  "name": "Walmart Inc",
+  "country": "US",
+  "currency": "USD",
+  "estimateCurrency": "USD",
+  "exchange": "NASDAQ NMS - GLOBAL MARKET",
+  "ipo": "1972-08-25",
+  "marketCapitalization": 884142.59,
+  "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/WMT.png",
+  "shareOutstanding": 7958.08,
+  "finnhubIndustry": "Retail",
+  "phone": "15012734000",
+  "weburl": "https://corporate.walmart.com/",
+  "floatingShare": 4386.8
+}

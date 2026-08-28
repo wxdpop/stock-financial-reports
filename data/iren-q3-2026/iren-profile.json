@@ -1,0 +1,16 @@
+{
+  "ticker": "IREN",
+  "name": "IREN Ltd",
+  "country": "AU",
+  "currency": "USD",
+  "estimateCurrency": "USD",
+  "exchange": "NASDAQ NMS - GLOBAL MARKET",
+  "ipo": "2021-11-17",
+  "marketCapitalization": 14463.434532344112,
+  "logo": "https://static2.finnhub.io/file/publicdatany/finnhubimage/stock_logo/950792146376.png",
+  "shareOutstanding": 357.38,
+  "finnhubIndustry": "Technology",
+  "phone": "61279068301",
+  "weburl": "https://iren.com/",
+  "floatingShare": 344.48
+}

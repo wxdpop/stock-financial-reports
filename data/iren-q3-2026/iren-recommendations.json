@@ -1,0 +1,38 @@
+[
+  {
+    "symbol": "IREN",
+    "period": "2026-08-01",
+    "strongBuy": 7,
+    "buy": 10,
+    "hold": 4,
+    "sell": 1,
+    "strongSell": 0
+  },
+  {
+    "symbol": "IREN",
+    "period": "2026-07-01",
+    "strongBuy": 7,
+    "buy": 9,
+    "hold": 5,
+    "sell": 1,
+    "strongSell": 0
+  },
+  {
+    "symbol": "IREN",
+    "period": "2026-06-01",
+    "strongBuy": 6,
+    "buy": 9,
+    "hold": 5,
+    "sell": 1,
+    "strongSell": 0
+  },
+  {
+    "symbol": "IREN",
+    "period": "2026-05-01",
+    "strongBuy": 6,
+    "buy": 11,
+    "hold": 5,
+    "sell": 1,
+    "strongSell": 0
+  }
+]
